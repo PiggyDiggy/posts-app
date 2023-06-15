@@ -1,16 +1,15 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 import type { Post as PostType } from "../../entities/post";
-import type { State as CommentsState } from "../../redux/reducers/comments";
+import type { State } from "../../redux/reducers";
 import { loadComments } from "../../redux/actions/comments";
-import { PostComments } from "../PostComments";
+import { PostComments } from "../PostCommentsList";
 
 type Props = {
   post: PostType;
 };
-
-type State = { comments: CommentsState };
 
 export const Post = ({ post }: Props) => {
   const [commentsOpened, setCommentsOpened] = useState(false);
@@ -26,6 +25,9 @@ export const Post = ({ post }: Props) => {
 
   return (
     <li>
+      <div>
+        <Link to={`user/${post.userId}`}>Author</Link>
+      </div>
       <div>{post.title}</div>
       <div>{post.body}</div>
       <button onClick={toggleCommentsOpen}>{commentsOpened ? "Hide Comments" : "Load Comments"}</button>

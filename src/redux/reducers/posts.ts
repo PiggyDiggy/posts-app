@@ -17,7 +17,7 @@ export default handleActions(
     },
     [LOAD_POSTS_SUCCESS]: (state, { payload }) => {
       state.status = "SUCCESS";
-      state.posts = state.posts.concat(payload);
+      state.posts = payload;
     },
     [LOAD_POSTS_FAIL]: (state, { payload }) => {
       state.status = "FAIL";
