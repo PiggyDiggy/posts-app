@@ -4,8 +4,8 @@ import type { State } from "../../redux/reducers";
 import { Post } from "../Post";
 
 export const Posts = () => {
-  const posts = useSelector((state: State) => state.page.posts);
-  const error = useSelector((state: State) => state.page.error);
+  const posts = useSelector((state: State) => state.posts.list);
+  const error = useSelector((state: State) => state.posts.error);
 
   return (
     <div>

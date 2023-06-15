@@ -3,12 +3,12 @@ import { type Actions, LOAD_POSTS, LOAD_POSTS_SUCCESS, LOAD_POSTS_FAIL } from ".
 import type { Post } from "../../entities/post";
 
 export type State = {
-  posts: Post[];
+  list: Post[];
   status: "LOADING" | "SUCCESS" | "FAIL";
   error: string;
 };
 
-const initialState = { posts: [], status: "SUCCESS" as const, error: "" };
+const initialState = { list: [], status: "SUCCESS" as const, error: "" };
 
 export default handleActions(
   {
@@ -17,7 +17,7 @@ export default handleActions(
     },
     [LOAD_POSTS_SUCCESS]: (state, { payload }) => {
       state.status = "SUCCESS";
-      state.posts = payload;
+      state.list = payload;
     },
     [LOAD_POSTS_FAIL]: (state, { payload }) => {
       state.status = "FAIL";

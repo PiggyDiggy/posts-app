@@ -6,21 +6,8 @@ export type State = {
   location: Location;
 };
 
-const initialState = {
-  location: {
-    pathname: "/",
-    search: "",
-    hash: "",
-    state: null,
-    key: "",
+export default handleActions({
+  [LOCATION_CHANGE]: (state, { payload }) => {
+    state.location = payload.newLoc;
   },
-};
-
-export default handleActions(
-  {
-    [LOCATION_CHANGE]: (state, { payload }) => {
-      state.location = payload.newLoc;
-    },
-  } as Handlers<State, Actions>,
-  initialState
-);
+} as Handlers<State, Actions>);

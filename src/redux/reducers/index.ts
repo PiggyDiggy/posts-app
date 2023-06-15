@@ -1,13 +1,15 @@
 import { combineReducers } from "redux";
 
-import page, { type State as PageState } from "./posts";
+import posts, { type State as PostsState } from "./posts";
 import comments, { type State as CommentsState } from "./comments";
 import router, { type State as RouterState } from "./router";
+import user, { type State as UserState } from "./user";
 
 export type State = {
-  page: PageState;
+  posts: PostsState;
   comments: CommentsState;
   router: RouterState;
+  user: UserState;
 };
 
-export default combineReducers({ page, comments, router });
+export default combineReducers({ posts, comments, router, user });

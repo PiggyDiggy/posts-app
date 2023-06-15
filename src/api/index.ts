@@ -26,6 +26,6 @@ export const getPostComments = async (postId: number): Promise<Comment[]> => {
   return await getData({ path: "comments", params });
 };
 
-export const getUserById = async (userId: UserId): Promise<User[]> => {
+export const getUserById = async (userId: UserId): Promise<User> => {
   return await getData({ path: `users/${userId}` });
 };
