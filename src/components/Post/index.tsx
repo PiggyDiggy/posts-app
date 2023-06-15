@@ -1,7 +1,11 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import Button from "react-bootstrap/Button";
+import Image from "react-bootstrap/Image";
+import Stack from "react-bootstrap/Stack";
 
+import UserPlaceholder from "../../assets/user-placeholder.png";
 import type { Post as PostType } from "../../entities/post";
 import type { State } from "../../redux/reducers";
 import { loadComments } from "../../redux/actions/comments";
@@ -13,25 +17,31 @@ type Props = {
 
 export const Post = ({ post }: Props) => {
   const [commentsOpened, setCommentsOpened] = useState(false);
-  const comments = useSelector((state: State) => state.comments?.[post.id]?.comments);
+  const postComments = useSelector((state: State) => state.comments[post.id]);
   const dispatch = useDispatch();
 
   const toggleCommentsOpen = () => {
-    if (comments === undefined) {
+    if (postComments === undefined) {
       dispatch(loadComments(post.id));
     }
     setCommentsOpened((current) => !current);
   };
 
   return (
-    <li>
-      <div>
-        <Link to={`user/${post.userId}`}>Author</Link>
-      </div>
-      <div>{post.title}</div>
-      <div>{post.body}</div>
-      <button onClick={toggleCommentsOpen}>{commentsOpened ? "Hide Comments" : "Load Comments"}</button>
-      {commentsOpened && <PostComments comments={comments} />}
-    </li>
+    <div>
+      <Stack gap={2}>
+        <Stack direction="horizontal" gap={3}>
+          <Link to={`/user/${post.userId}`}>
+            <Image width={40} height={40} src={UserPlaceholder} alt="Author" title="Author" />
+          </Link>
+          <div className="fw-semibold fs-5 text-break">{post.title}</div>
+        </Stack>
+        <div>{post.body}</div>
+      </Stack>
+      <Button className="mt-2" size="sm" onClick={toggleCommentsOpen}>
+        {commentsOpened ? "Hide Comments" : "Show Comments"}
+      </Button>
+      {commentsOpened && <PostComments comments={postComments.comments} status={postComments.status} />}
+    </div>
   );
 };

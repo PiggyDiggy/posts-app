@@ -1,3 +1,5 @@
+import ListGroup from "react-bootstrap/ListGroup";
+
 import type { Post as PostType } from "../../entities/post";
 import { Post } from "../Post";
 
@@ -10,11 +12,13 @@ export const PostsList = ({ posts, error }: Props) => {
   return (
     <div>
       {error || (
-        <ul>
+        <ListGroup className="my-2">
           {posts.map((post) => (
-            <Post post={post} key={post.id} />
+            <ListGroup.Item key={post.id}>
+              <Post post={post} />
+            </ListGroup.Item>
           ))}
-        </ul>
+        </ListGroup>
       )}
     </div>
   );

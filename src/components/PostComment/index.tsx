@@ -6,9 +6,9 @@ type Props = {
 
 export const PostComment = ({ comment }: Props) => {
   return (
-    <li>
-      <div>{comment.email}</div>
-      <div>{comment.body}</div>
-    </li>
+    <div>
+      <div className="fw-semibold text-break">{comment.email}</div>
+      <div className="text-secondary">{`> ${comment.body}`}</div>
+    </div>
   );
 };

@@ -23,7 +23,7 @@ function App({ children }: Props) {
   return (
     <div className="App">
       <Header />
-      <main>{children}</main>
+      <main className="mx-3">{children}</main>
     </div>
   );
 }

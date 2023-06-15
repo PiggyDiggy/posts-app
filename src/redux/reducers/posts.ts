@@ -8,7 +8,7 @@ export type State = {
   error: string;
 };
 
-const initialState = { list: [], status: "SUCCESS" as const, error: "" };
+const initialState = { list: [], status: "LOADING" as const, error: "" };
 
 export default handleActions(
   {

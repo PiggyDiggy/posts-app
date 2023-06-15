@@ -27,9 +27,9 @@ export const getPostComments = async (postId: number): Promise<Comment[]> => {
 };
 
 export const getUserById = async (userId: UserId): Promise<User> => {
-  const [{ id, name, username, email, website }, posts] = await Promise.all([
+  const [{ id, name, username, email, website, address, phone }, posts] = await Promise.all([
     getData({ path: `users/${userId}` }),
     getPosts({ userId: String(userId) }),
   ]);
-  return { id, name, username, email, website, posts };
+  return { id, name, username, email, website, posts, phone, city: address.city };
 };

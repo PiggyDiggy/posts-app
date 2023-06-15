@@ -8,5 +8,7 @@ export type User = {
   username: string;
   email: string;
   website: string;
+  city: string;
+  phone: string;
   posts: Post[];
 };
