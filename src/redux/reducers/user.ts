@@ -2,7 +2,8 @@ import { type Handlers, handleActions } from "typed-actions";
 import { type Actions, LOAD_USER, LOAD_USER_SUCCESS, LOAD_USER_FAIL } from "../actions/user";
 import type { User } from "../../entities/user";
 
-export type State = User & {
+export type State = {
+  info: User;
   status: "LOADING" | "SUCCESS" | "FAIL";
   error: string;
 };
@@ -13,7 +14,7 @@ export default handleActions({
     status: "LOADING",
   }),
   [LOAD_USER_SUCCESS]: (_, { payload }) => ({
-    ...payload,
+    info: payload,
     status: "SUCCESS",
     error: "",
   }),

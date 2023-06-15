@@ -1,12 +1,12 @@
-import { useSelector } from "react-redux";
-
-import type { State } from "../../redux/reducers";
+import type { Post as PostType } from "../../entities/post";
 import { Post } from "../Post";
 
-export const Posts = () => {
-  const posts = useSelector((state: State) => state.posts.list);
-  const error = useSelector((state: State) => state.posts.error);
+type Props = {
+  posts: PostType[];
+  error?: string;
+};
 
+export const PostsList = ({ posts, error }: Props) => {
   return (
     <div>
       {error || (

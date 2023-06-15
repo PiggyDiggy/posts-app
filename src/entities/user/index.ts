@@ -1,3 +1,5 @@
+import type { Post } from "../post";
+
 export type UserId = number;
 
 export type User = {
@@ -6,4 +8,5 @@ export type User = {
   username: string;
   email: string;
   website: string;
+  posts: Post[];
 };
