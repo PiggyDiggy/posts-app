@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import type { State as PageState } from "../../redux/reducers/posts";
-import { loadPosts } from "../../redux/actions";
+import { loadPosts } from "../../redux/actions/posts";
 import { Post } from "../Post";
 
 type State = { page: PageState };

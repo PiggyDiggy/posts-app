@@ -1,5 +1,5 @@
 import { type Handlers, handleActions } from "typed-actions/immer";
-import { type Actions, LOAD_POSTS, LOAD_POSTS_SUCCESS, LOAD_POSTS_FAIL } from "../actions";
+import { type Actions, LOAD_POSTS, LOAD_POSTS_SUCCESS, LOAD_POSTS_FAIL } from "../actions/posts";
 import type { Post } from "../../entities/post";
 
 export type State = {
