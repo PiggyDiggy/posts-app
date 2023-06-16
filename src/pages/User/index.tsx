@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
 import Stack from "react-bootstrap/Stack";
 
-import { IconBack } from "../../components/IconBack";
+import { IconBack } from "../../components/Icons/IconBack";
 import type { State } from "../../redux/reducers";
 import { UserCard } from "../../components/UserCard";
 import { UserCardSkeleton } from "../../components/UserCard/skeleton";
