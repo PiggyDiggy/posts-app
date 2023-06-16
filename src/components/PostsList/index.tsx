@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import ListGroup from "react-bootstrap/ListGroup";
 
-import { PagePagination } from "../../components/PagePagination";
+import { PostsPagination } from "../../components/PostsPagination";
 import type { Post as PostType } from "../../entities/post";
 import { Post } from "../Post";
 
@@ -46,6 +46,10 @@ export const PostsList = ({ posts, error, withPagination, page, perPage, onPageC
     return <div>{error}</div>;
   }
 
+  if (list.length === 0) {
+    return <div>No posts found</div>;
+  }
+
   return (
     <div>
       <ListGroup className="my-2">
@@ -56,7 +60,7 @@ export const PostsList = ({ posts, error, withPagination, page, perPage, onPageC
         ))}
       </ListGroup>
       {withPagination && (
-        <PagePagination currentPage={page} pagesCount={Math.ceil(posts.length / perPage)} onPageChange={changePage} />
+        <PostsPagination currentPage={page} pagesCount={Math.ceil(posts.length / perPage)} onPageChange={changePage} />
       )}
     </div>
   );

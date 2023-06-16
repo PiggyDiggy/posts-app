@@ -6,9 +6,9 @@ type Props = {
   onPageChange: (page: number) => void;
 };
 
-export const PagePagination = ({ pagesCount, currentPage, onPageChange }: Props) => {
+export const PostsPagination = ({ pagesCount, currentPage, onPageChange }: Props) => {
   return (
-    <div>
+    <div className="mt-4">
       <Pagination>
         {currentPage > 2 && pagesCount > 3 && (
           <>

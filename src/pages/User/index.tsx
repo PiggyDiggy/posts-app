@@ -45,7 +45,7 @@ export const UserPage = () => {
 
   return (
     <div>
-      <Link className="text-muted fw-semibold text-decoration-none" to="/">
+      <Link className="d-inline-block text-muted fw-semibold text-decoration-none" to="/">
         <Stack direction="horizontal" gap={1}>
           <IconBack />
           <span>Back</span>
