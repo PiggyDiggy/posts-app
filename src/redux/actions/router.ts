@@ -1,7 +1,7 @@
 import { action, createActions } from "typed-actions";
 import { type Location } from "react-router-dom";
 
-export const LOCATION_CHANGE = "LOCATION_CHANGE";
+export const LOCATION_CHANGE = "@router/LOCATION_CHANGE";
 
 type LocationChangePayload = {
   oldLoc: Location | null;

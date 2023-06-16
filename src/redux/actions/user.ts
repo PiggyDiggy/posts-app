@@ -2,9 +2,9 @@ import { action, createActions } from "typed-actions";
 
 import type { User, UserId } from "../../entities/user";
 
-export const LOAD_USER = "LOAD_USER";
-export const LOAD_USER_SUCCESS = "LOAD_USER_SUCCESS";
-export const LOAD_USER_FAIL = "LOAD_USER_FAIL";
+export const LOAD_USER = "@user/LOAD_USER";
+export const LOAD_USER_SUCCESS = "@user/LOAD_USER_SUCCESS";
+export const LOAD_USER_FAIL = "@user/LOAD_USER_FAIL";
 
 let actions;
 

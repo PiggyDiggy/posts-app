@@ -3,9 +3,9 @@ import { action, createActions } from "typed-actions";
 import type { Comment } from "../../entities/comment";
 import type { PostId } from "../../entities/post";
 
-export const LOAD_COMMENTS = "LOAD_COMMENTS";
-export const LOAD_COMMENTS_SUCCESS = "LOAD_COMMENTS_SUCCESS";
-export const LOAD_COMMENTS_FAIL = "LOAD_COMMENTS_FAIL";
+export const LOAD_COMMENTS = "@comments/LOAD_COMMENTS";
+export const LOAD_COMMENTS_SUCCESS = "@comments/LOAD_COMMENTS_SUCCESS";
+export const LOAD_COMMENTS_FAIL = "@comments/LOAD_COMMENTS_FAIL";
 
 let actions;
 

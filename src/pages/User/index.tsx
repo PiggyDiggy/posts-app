@@ -33,13 +33,14 @@ export const UserPage = () => {
       <section>
         <UserCard user={user} />
         <h4>User Posts</h4>
-        <PostsList posts={user.posts} />
+        <PostsList withPagination={false} posts={user.posts} />
       </section>
     );
   }
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    // @ts-ignore
+    window.scrollTo({ top: 0, behavior: "instant" });
   }, []);
 
   return (
