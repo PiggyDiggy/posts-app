@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import ListGroup from "react-bootstrap/ListGroup";
 
 import { PagePagination } from "../../components/PagePagination";
@@ -21,13 +21,11 @@ type Props = {
 );
 
 export const PostsList = ({ posts, error, withPagination, page, perPage, onPageChange }: Props) => {
-  const [currentPage, setCurrentPage] = useState(page || 1);
   const previousPage = useRef<number | null>(null);
 
-  const list = withPagination ? posts.slice(perPage * (currentPage - 1), perPage * currentPage) : posts;
+  const list = withPagination ? posts.slice(perPage * (page - 1), perPage * page) : posts;
 
   const changePage = (newPage: number) => {
-    setCurrentPage(newPage);
     onPageChange?.(newPage);
   };
 
@@ -55,11 +53,7 @@ export const PostsList = ({ posts, error, withPagination, page, perPage, onPageC
         ))}
       </ListGroup>
       {withPagination && (
-        <PagePagination
-          currentPage={currentPage}
-          pagesCount={Math.floor(posts.length / perPage)}
-          onPageChange={changePage}
-        />
+        <PagePagination currentPage={page} pagesCount={Math.ceil(posts.length / perPage)} onPageChange={changePage} />
       )}
     </div>
   );

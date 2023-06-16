@@ -1,5 +1,12 @@
 import { type Handlers, handleActions } from "typed-actions/immer";
-import { type Actions, LOAD_POSTS, LOAD_POSTS_SUCCESS, LOAD_POSTS_FAIL, CHANGE_PAGE } from "../actions/posts";
+import {
+  type Actions,
+  LOAD_POSTS,
+  LOAD_POSTS_SUCCESS,
+  LOAD_POSTS_FAIL,
+  CHANGE_PAGE,
+  SEARCH_POSTS,
+} from "../actions/posts";
 import type { Post } from "../../entities/post";
 
 export type State = {
@@ -8,9 +15,10 @@ export type State = {
   perPage: number;
   status: "LOADING" | "SUCCESS" | "FAIL";
   error: string;
+  search: string;
 };
 
-const initialState = { list: [], status: "LOADING" as const, error: "", page: 1, perPage: 10 };
+const initialState = { list: [], status: "LOADING" as const, error: "", page: 1, perPage: 10, search: "" };
 
 export default handleActions(
   {
@@ -27,6 +35,10 @@ export default handleActions(
     },
     [CHANGE_PAGE]: (state, { payload }) => {
       state.page = payload;
+    },
+    [SEARCH_POSTS]: (state, { payload }) => {
+      state.search = payload;
+      state.page = 1;
     },
   } as Handlers<State, Actions>,
   initialState

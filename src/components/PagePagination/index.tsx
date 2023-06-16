@@ -16,7 +16,7 @@ export const PagePagination = ({ pagesCount, currentPage, onPageChange }: Props)
             <Pagination.Ellipsis />
           </>
         )}
-        {currentPage === pagesCount && (
+        {currentPage === pagesCount && pagesCount > 2 && (
           <Pagination.Item onClick={() => onPageChange(currentPage - 2)}>{currentPage - 2}</Pagination.Item>
         )}
         {currentPage > 1 && (
@@ -26,7 +26,7 @@ export const PagePagination = ({ pagesCount, currentPage, onPageChange }: Props)
         {currentPage < pagesCount && (
           <Pagination.Item onClick={() => onPageChange(currentPage + 1)}>{currentPage + 1}</Pagination.Item>
         )}
-        {currentPage === 1 && (
+        {currentPage === 1 && pagesCount > 2 && (
           <Pagination.Item onClick={() => onPageChange(currentPage + 2)}>{currentPage + 2}</Pagination.Item>
         )}
         {currentPage < pagesCount - 1 && (
