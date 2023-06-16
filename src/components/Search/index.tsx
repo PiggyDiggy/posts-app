@@ -1,21 +1,15 @@
+import type { FormControlProps } from "react-bootstrap/esm/FormControl";
 import Form from "react-bootstrap/Form";
 
 type Props = {
   value: string;
   onChange: (val: string) => void;
-  placeholder?: string;
-};
+} & Omit<FormControlProps, "onChange">;
 
-export const Search = ({ value, placeholder, onChange }: Props) => {
+export const Search = ({ value, onChange, ...props }: Props) => {
   return (
     <Form>
-      <Form.Control
-        onChange={(e) => onChange(e.target.value)}
-        value={value}
-        type="search"
-        placeholder={placeholder}
-        aria-label={placeholder}
-      />
+      <Form.Control onChange={(e) => onChange(e.target.value)} value={value} type="search" {...props} />
     </Form>
   );
 };

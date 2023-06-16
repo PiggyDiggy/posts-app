@@ -10,12 +10,13 @@ export const PagePagination = ({ pagesCount, currentPage, onPageChange }: Props)
   return (
     <div>
       <Pagination>
-        {currentPage > 2 && (
+        {currentPage > 2 && pagesCount > 3 && (
           <>
             <Pagination.First onClick={() => onPageChange(1)} />
             <Pagination.Ellipsis />
           </>
         )}
+
         {currentPage === pagesCount && pagesCount > 2 && (
           <Pagination.Item onClick={() => onPageChange(currentPage - 2)}>{currentPage - 2}</Pagination.Item>
         )}
@@ -29,7 +30,8 @@ export const PagePagination = ({ pagesCount, currentPage, onPageChange }: Props)
         {currentPage === 1 && pagesCount > 2 && (
           <Pagination.Item onClick={() => onPageChange(currentPage + 2)}>{currentPage + 2}</Pagination.Item>
         )}
-        {currentPage < pagesCount - 1 && (
+
+        {currentPage < pagesCount - 1 && pagesCount > 3 && (
           <>
             <Pagination.Ellipsis />
             <Pagination.Last onClick={() => onPageChange(pagesCount)} />

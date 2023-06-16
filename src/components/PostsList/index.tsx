@@ -26,7 +26,10 @@ export const PostsList = ({ posts, error, withPagination, page, perPage, onPageC
   const list = withPagination ? posts.slice(perPage * (page - 1), perPage * page) : posts;
 
   const changePage = (newPage: number) => {
-    onPageChange?.(newPage);
+    if (withPagination) {
+      onPageChange(newPage);
+      previousPage.current = newPage;
+    }
   };
 
   useEffect(() => {
@@ -36,7 +39,7 @@ export const PostsList = ({ posts, error, withPagination, page, perPage, onPageC
       // @ts-ignore
       window.scrollTo({ behavior: "instant", top: document.body.scrollHeight });
     }
-    previousPage.current = page;
+    previousPage.current = null;
   }, [page, withPagination]);
 
   if (error) {

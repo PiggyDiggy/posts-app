@@ -40,7 +40,7 @@ export const PostsPage = () => {
       <div className="d-flex justify-content-between">
         <h2>Posts</h2>
         <Stack direction="horizontal" gap={2}>
-          <Search placeholder="Search Posts" value={search} onChange={onSearch} />
+          <Search disabled={status !== "SUCCESS"} placeholder="Search Posts" value={search} onChange={onSearch} />
           <Button
             onClick={onSortButtonClick}
             variant={sort === "asc" || sort === "dsc" ? "primary" : "light"}
