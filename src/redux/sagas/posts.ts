@@ -1,10 +1,12 @@
-import { takeLatest, call, put } from "redux-saga/effects";
+import { takeLatest, call, put, delay } from "redux-saga/effects";
 
 import { getPosts } from "../../api";
 import { LOAD_POSTS, loadPostsSuccess, loadPostsFail } from "../actions/posts";
 
 function* loadPostsSaga() {
   try {
+    // fake delay
+    yield delay(500);
     const posts: Awaited<ReturnType<typeof getPosts>> = yield call(getPosts, {});
     yield put(loadPostsSuccess(posts));
   } catch {
